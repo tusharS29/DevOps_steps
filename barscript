@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                sh '''
+                cd /home/sachin/Downloads/forbar
+                #. /home/sachin/ace-11.0.0.18/server/bin/mqsiprofile
+                #mqsipackagebar -a demo4.bar -k demo-master -o https://github.com/sac1123/demodemo/
+                curl -u admin:Sacnacmac1 --upload-file demo4.bar  http://localhost:8081/repository/trailbars/$JOB_NAME/$BUILD_NUMBER/demo4.bar
+                '''
+            }
+        }
+    }
+}
